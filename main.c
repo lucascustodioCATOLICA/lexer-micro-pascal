@@ -31,8 +31,7 @@ int isOperator(char ch) {
     return ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '=' || ch == '<' || ch == '>';
 }
 
-// Função principal de análise léxica
-void lexicalAnalysis(const char *source_code, int l) {
+void parser(const char *source_code, int l) {
     int i = 0;
     int len = strlen(source_code);
     char token[MAX_TOKEN_LEN];
@@ -40,16 +39,15 @@ void lexicalAnalysis(const char *source_code, int l) {
     while (i < len) {
         // Ignora espaços em branco
         if (isspace(source_code[i])) {
-            if(source_code[i] == '\n') {
-                printf("New Line \n");
-                l++;
-            }
             i++;
             continue;
         }
 
+        // Identifica operador de atribuicao
         if(source_code[i] == ':' && source_code[i+1] == '=') {
-            printf("Operador Atribuicao: %c%c\n", source_code[i], source_code[i+1]);
+            printf("Operador: %c\n", source_code[i], source_code[i+1]);
+            printf("Linha %d Coluna %d\n", i, l);
+            printf("--- --- ---\n");
             i++;   
             i++;
             continue;
@@ -58,6 +56,8 @@ void lexicalAnalysis(const char *source_code, int l) {
         // Identifica operadores
         if (isOperator(source_code[i])) {
             printf("Operador: %c\n", source_code[i]);
+            printf("Linha %d Coluna %d\n", i, l);
+            printf("--- --- ---\n");
             i++;
             continue;
         }
@@ -66,6 +66,8 @@ void lexicalAnalysis(const char *source_code, int l) {
         if (isDelimiter(source_code[i])) {
             if (source_code[i] == ';') {
                 printf("Delimitador: %c\n", source_code[i]);
+                printf("Linha %d Coluna %d\n", i, l);
+                printf("--- --- ---\n");
             }
             i++;
             continue;
@@ -78,7 +80,9 @@ void lexicalAnalysis(const char *source_code, int l) {
                 token[j++] = source_code[i++];
             }
             token[j] = '\0';
-            printf("Número: %s\n", token);
+            printf("Numero: %s\n", token);
+            printf("Linha %d Coluna %d\n", i, l);
+            printf("--- --- ---\n");
             continue;
         }
 
@@ -91,27 +95,31 @@ void lexicalAnalysis(const char *source_code, int l) {
             token[j] = '\0';
             if (isKeyword(token)) {
                 printf("Palavra-chave: %s\n", token);
+                printf("Linha %d Coluna %d\n", i, l);
+                printf("--- --- ---\n");
             } else {
                 printf("Identificador: %s\n", token);
+                printf("Linha %d Coluna %d\n", i, l);
+                printf("--- --- ---\n");    
             }
             continue;
         }
 
         if(source_code[i] == '.') {
-            printf("Ponto\n");
             i++;
             continue;
         }
 
         // Caso de erro para caracteres desconhecidos
-        printf("Erro léxico: %c %d %d\n", source_code[i], i, l);
+        printf("Erro lexico: %c %d %d\n", source_code[i], i, l);
+        printf("Linha %d Coluna %d\n", i, l);
+        printf("--- --- ---\n");
         i++;
     }
 }
 
 int main() {
-    // Abre o arquivo .lex para leitura
-    FILE *file = fopen("example5.lex", "r");
+    FILE *file = fopen("example4.lex", "r");
     
     if (file == NULL) {
         printf("Erro ao abrir o arquivo.\n");
@@ -121,13 +129,11 @@ int main() {
     char line[MAX_LINE_LEN];
     int l = 0;
 
-    // Lê cada linha do arquivo e realiza a análise léxica
     while (fgets(line, MAX_LINE_LEN, file)) {
-        lexicalAnalysis(line, l);
+        parser(line, l);
         l++;
     }
 
-    // Fecha o arquivo após a leitura
     fclose(file);
     
     return 0;
