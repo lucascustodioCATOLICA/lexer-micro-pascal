@@ -119,7 +119,7 @@ void parser(const char *source_code, int l) {
 }
 
 int main() {
-    FILE *file = fopen("example4.lex", "r");
+    FILE *file = fopen("example.lex", "r");
     
     if (file == NULL) {
         printf("Erro ao abrir o arquivo.\n");
