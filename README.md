@@ -1,26 +1,43 @@
-# Explicacao tecnica do codigo
+# Analisador Lexico
 
-## Funcoes:
+Este projeto implementa um analisador léxico para a linguagem de programação MicroPascal. O analisador identifica e classifica tokens a partir de um código-fonte, além de relatar erros léxicos.
 
-- isKeyword
+## Funções
 
-        Verifica se a string passada eh igual a uma keyword da linguagem.
+- **Palavras-chave**: program, var, integer, real, begin, end, if, then, else, while, do.
+- **Identificadores**: ID
 
-- isDelimiter
+### Funções
 
-        Verifica se o caracter passado eh um delimitador.
+- **`isKeyword(const char *str)`**: 
+  - **Propósito**: Verifica se a string passada é uma palavra-chave da linguagem.
+  - **Parâmetros**: 
+    - `str`: A string a ser verificada.
+  - **Retorno**: Retorna 1 se for uma palavra-chave, 0 caso contrário.
 
-- isOperator
+- **`isDelimiter(char ch)`**:
+  - **Propósito**: Verifica se o caractere passado é um delimitador (espaços em branco, ponto e vírgula, parênteses, etc.).
+  - **Parâmetros**: 
+    - `ch`: O caractere a ser verificado.
+  - **Retorno**: Retorna 1 se for um delimitador, 0 caso contrário.
 
-        Verifica se o caracter passado eh um operador logico-matematico.
+- **`isOperator(char ch)`**:
+  - **Propósito**: Verifica se o caractere passado é um operador lógico-matemático (soma, subtração, multiplicação, etc.).
+  - **Parâmetros**: 
+    - `ch`: O caractere a ser verificado.
+  - **Retorno**: Retorna 1 se for um operador, 0 caso contrário.
 
-- parser
+- **`parser(const char *source_code, int l)`**:
+  - **Propósito**: Função principal do programa. Lê o código-fonte linha por linha, identifica e classifica os tokens, imprime os tokens encontrados, suas localizações e erros léxicos.
+  - **Parâmetros**: 
+    - `source_code`: A linha de código-fonte a ser analisada.
+    - `l`: O número da linha atual.
+  
+## Como Executar
 
-        Eh a funcao principal do programa, ela le linha por linha do codigo indentificando e qualificando os tokens. Quando um token eh encontrado, ela printa o token e sua localizacao no codigo fonte.
-        Tambem indentifica erros lexicos.
-
-# Como executar:
-
-- mude a linha 122 da main.c para indicar o codigo fonte que quer compilar.
-- rode o comando: gcc .\main.c -o main.exe
-- rode o comando: ./main.exe
+1. Mude a linha `122` do `main.c` para indicar o código fonte que deseja compilar.
+2. Compile o código usando o comando: 
+```
+   gcc main.c -o output.exe
+   ./output.exe
+```
