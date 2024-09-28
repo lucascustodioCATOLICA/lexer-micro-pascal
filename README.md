@@ -2,12 +2,10 @@
 
 Este projeto implementa um analisador léxico para a linguagem de programação MicroPascal. O analisador identifica e classifica tokens a partir de um código-fonte, além de relatar erros léxicos.
 
-## Funções
-
 - **Palavras-chave**: program, var, integer, real, begin, end, if, then, else, while, do.
 - **Identificadores**: ID
 
-### Funções
+## Funções
 
 - **`isKeyword(const char *str)`**: 
   - **Propósito**: Verifica se a string passada é uma palavra-chave da linguagem.
@@ -41,3 +39,14 @@ Este projeto implementa um analisador léxico para a linguagem de programação 
    gcc main.c -o output.exe
    ./output.exe
 ```
+
+ # Integrantes do projeto
+ 
+ Nome |  | GitHub |
+| ------ | ---- | 
+| Pedro Carneiro de Lima | <a href="https://github.com/pedrocarneirodev"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" target="_blanck"></a> |  
+| Lucas Francisco Custódio | <a href="https://github.com/afslucass"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" target="_blanck"></a> |
+|  Arthur Faria dos Santos | <a href="https://github.com/Arthur-Faria-dos-Santos"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" target="_blanck"></a> |
+| Breno do Santos | <a href="https://github.com/"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" target="_blanck"></a> |
+| João Paulo | <a href="https://github.com/JooJPaulo"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" target="_blanck"></a> |
+
