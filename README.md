@@ -39,8 +39,9 @@ Este projeto implementa um analisador léxico para a linguagem de programação 
    gcc main.c -o output.exe
    ./output.exe
 ```
+<br>
 
- # Integrantes do projeto
+# Integrantes do projeto
  
 | Foto | Nome | GitHub | Linkedin |
 | ------ | ---- | ------ |--------- |
