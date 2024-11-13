@@ -9,12 +9,35 @@
 const char *keywords[] = {
     "begin", "end", "var", "if", "then", "else", "while", "do", "program", "integer", "real"
 };
+const char *relational_operators[] = {
+    "=", "<>", "<=", ">=", "<", ">"
+};
+const char *math_operators[] = {
+    "-", "+", "/", "*"
+};
 int num_keywords = 10;
 
-// Verifica se uma string é uma palavra-chave
 int isKeyword(const char *str) {
     for (int i = 0; i < num_keywords; i++) {
         if (strcmp(str, keywords[i]) == 0) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+int isRelationalOperator(const char *str) {
+    for (int i = 0; i < num_keywords; i++) {
+        if (strcmp(str, relational_operators[i]) == 0) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+int isMathOperator(const char *str) {
+    for (int i = 0; i < num_keywords; i++) {
+        if (strcmp(str, math_operators[i]) == 0) {
             return 1;
         }
     }
