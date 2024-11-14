@@ -6,7 +6,7 @@ var
 
 begin
   x := 10;
-  y := 20;
+  y := (20);
   z := x + y * 2.5;
   if x > y then
     x := x - 1
