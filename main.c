@@ -26,14 +26,12 @@ int isKeyword(const char *str) {
     return 0;
 }
 
-int isRelationalOperator(const char *str) {
-    for (int i = 0; i < 2; i++) {
-        if (strcmp(str, relational_operators[i]) == 0) {
-            return 1;
-        }
-    }
-    return 0;
-}
+// int isRelationalOperator(const char *source_code, int l) {
+//     if (source_code == '=' || source_code == '>' || source_code == '<') {
+//         return 1;
+//     }
+//     return 0;
+// }
 
 int isMathOperator(char ch) {
     return ch == math_operators[0] || ch == math_operators[1] || ch == math_operators[2] || ch == math_operators[3];
@@ -83,8 +81,26 @@ void parser(const char *source_code, int l) {
             continue;
         }
 
-        if(isRelationalOperator(&source_code[i])) {
-            printf("Operador Relacional: %s\n", source_code[i]);
+
+        // identifica operadores relacionais
+        if (source_code[i] == '=' || source_code[i] == '>' || source_code[i] == '<') {
+            if(source_code[i+1] == '=') {
+                printf("Operador Relacional: %c%c\n", source_code[i], source_code[i+1]);                
+                printf("Linha %d Coluna %d\n", i, l);
+                printf("--- --- ---\n");
+                i++;    
+                i++;
+                continue;
+            }
+            if(source_code[i] == '<' || source_code[i+1] == '>') {
+                printf("Operador Relacional: %c%c\n", source_code[i], source_code[i+1]);                
+                printf("Linha %d Coluna %d\n", i, l);
+                printf("--- --- ---\n");
+                i++;    
+                i++;
+                continue;
+            }
+            printf("Operador Relacional: %c\n", source_code[i]);
             printf("Linha %d Coluna %d\n", i, l);
             printf("--- --- ---\n");
             i++;
