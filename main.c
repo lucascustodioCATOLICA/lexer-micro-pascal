@@ -110,7 +110,7 @@ void parser(const char *source_code, int l) {
         // Identifica números
         if (isdigit(source_code[i])) {
             int j = 0;
-            while (i < len && isdigit(source_code[i])) {
+            while (i < len && (isdigit(source_code[i]) || source_code[i] == '.')) {
                 token[j++] = source_code[i++];
             }
             token[j] = '\0';
