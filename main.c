@@ -12,8 +12,8 @@ const char *keywords[] = {
 const char *relational_operators[] = {
     "=", "<>", "<=", ">=", "<", ">"
 };
-const char *math_operators[] = {
-    "-", "+", "/", "*"
+const char math_operators[] = {
+    '-', '+', '/', '*'
 };
 int num_keywords = 10;
 
@@ -27,7 +27,7 @@ int isKeyword(const char *str) {
 }
 
 int isRelationalOperator(const char *str) {
-    for (int i = 0; i < num_keywords; i++) {
+    for (int i = 0; i < 2; i++) {
         if (strcmp(str, relational_operators[i]) == 0) {
             return 1;
         }
@@ -35,23 +35,13 @@ int isRelationalOperator(const char *str) {
     return 0;
 }
 
-int isMathOperator(const char *str) {
-    for (int i = 0; i < num_keywords; i++) {
-        if (strcmp(str, math_operators[i]) == 0) {
-            return 1;
-        }
-    }
-    return 0;
+int isMathOperator(char ch) {
+    return ch == math_operators[0] || ch == math_operators[1] || ch == math_operators[2] || ch == math_operators[3];
 }
 
 // Verifica se um caractere é um delimitador
 int isDelimiter(char ch) {
     return isspace(ch) || ch == ';' || ch == '(' || ch == ')' || ch == ',' || ch == ':';
-}
-
-// Verifica se um caractere é um operador
-int isOperator(char ch) {
-    return ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '=' || ch == '<' || ch == '>';
 }
 
 void parser(const char *source_code, int l) {
@@ -68,7 +58,7 @@ void parser(const char *source_code, int l) {
 
         // Identifica operador de atribuicao
         if(source_code[i] == ':' && source_code[i+1] == '=') {
-            printf("Operador: %c\n", source_code[i], source_code[i+1]);
+            printf("Operador: %c%c\n", source_code[i], source_code[i+1]);
             printf("Linha %d Coluna %d\n", i, l);
             printf("--- --- ---\n");
             i++;   
@@ -76,22 +66,27 @@ void parser(const char *source_code, int l) {
             continue;
         }
 
-        // Identifica operadores
-        if (isOperator(source_code[i])) {
-            printf("Operador: %c\n", source_code[i]);
+        // Identifica delimitadores
+        if (isDelimiter(source_code[i])) {
+            printf("Delimitador: %c\n", source_code[i]);
             printf("Linha %d Coluna %d\n", i, l);
             printf("--- --- ---\n");
             i++;
             continue;
         }
 
-        // Identifica delimitadores
-        if (isDelimiter(source_code[i])) {
-            if (source_code[i] == ';') {
-                printf("Delimitador: %c\n", source_code[i]);
-                printf("Linha %d Coluna %d\n", i, l);
-                printf("--- --- ---\n");
-            }
+        if (isMathOperator(source_code[i])) {
+            printf("Operador Matematico: %c\n", source_code[i]);
+            printf("Linha %d Coluna %d\n", i, l);
+            printf("--- --- ---\n");
+            i++;
+            continue;
+        }
+
+        if(isRelationalOperator(&source_code[i])) {
+            printf("Operador Relacional: %s\n", source_code[i]);
+            printf("Linha %d Coluna %d\n", i, l);
+            printf("--- --- ---\n");
             i++;
             continue;
         }
