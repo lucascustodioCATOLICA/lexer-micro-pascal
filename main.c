@@ -140,6 +140,9 @@ void parser(const char *source_code, int l) {
         }
 
         if(source_code[i] == '.') {
+            printf("Ponto final do programa: %c\n", source_code[i]);
+            printf("Linha %d Coluna %d\n", i, l);
+            printf("--- --- ---\n");    
             i++;
             continue;
         }
