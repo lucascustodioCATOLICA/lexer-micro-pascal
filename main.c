@@ -34,6 +34,8 @@ const char math_operators[] = {
 };
 int num_keywords = 10;
 
+struct TokenLinkedList* head = NULL;
+
 void appendToken(struct TokenLinkedList** head, const char* token, const char* type, const int col, const int row) {
     struct Token* new_token = (struct Token*)malloc(sizeof(struct Token));
     strcpy(new_token->token, token);
@@ -90,8 +92,6 @@ void parser(const char *source_code, int l) {
     int i = 0;
     int len = strlen(source_code);
     char token[MAX_TOKEN_LEN];
-
-    struct TokenLinkedList* head = NULL;
     
     while (i < len) {
         // Ignora espaços em branco
@@ -198,8 +198,6 @@ void parser(const char *source_code, int l) {
         printf("--- --- ---\n");
         return;
     }
-
-    traverseTokenLinkedList(head);
 }
 
 int main() {
@@ -218,6 +216,7 @@ int main() {
         l++;
     }
 
+    traverseTokenLinkedList(head);
     fclose(file);
     
     return 0;
