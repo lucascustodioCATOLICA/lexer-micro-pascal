@@ -216,7 +216,7 @@ int main() {
         l++;
     }
 
-    traverseTokenLinkedList(head);
+    traverseTokenLinkedList(head); // essa funcao faz um loop pela lista de tokens, usar ela para implementar o analisador lexico
     fclose(file);
     
     return 0;
