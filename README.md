@@ -36,8 +36,8 @@ Este projeto implementa um analisador léxico para a linguagem de programação 
 1. Mude a linha `122` do `main.c` para indicar o código fonte que deseja compilar.
 2. Compile o código usando o comando: 
 ```
-   gcc main.c -o output.exe
-   ./output.exe
+   gcc .\main.c .\types.c .\lex.c .\syntax.c -o main.exe
+   ./main.exe
 ```
 <br>
 
