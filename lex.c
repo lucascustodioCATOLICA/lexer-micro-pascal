@@ -24,16 +24,6 @@ void appendToken(struct TokenLinkedList** head, const char* token, const char* t
     last->next = new_node;
 }
 
-void traverseTokenLinkedList(struct TokenLinkedList* node) {
-    while (node != NULL) {
-        printf("%s\n", node->token.type);
-        printf("%s\n", node->token.token);
-        printf("col %d row %d\n", node->token.col, node->token.row);
-        printf("--- --- ---\n");
-        node = node->next;
-    }
-}
-
 int isKeyword(const char *str) {
     for (int i = 0; i < num_keywords; i++) {
         if (strcmp(str, keywords[i]) == 0) {

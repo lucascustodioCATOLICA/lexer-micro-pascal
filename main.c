@@ -1,5 +1,6 @@
 #include "types.h"
 #include "lex.h"
+#include "syntax.h"
 
 int main() {
     FILE *file = fopen("example.lex", "r");
@@ -17,7 +18,7 @@ int main() {
         l++;
     }
 
-    traverseTokenLinkedList(head);
+    analiser(head);
     fclose(file);
     
     return 0;
