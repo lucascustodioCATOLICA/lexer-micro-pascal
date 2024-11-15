@@ -150,6 +150,7 @@ void parser(const char *source_code, int l) {
         printf("Erro lexico: %c %d %d\n", source_code[i], i, l);
         printf("Linha %d Coluna %d\n", i, l);
         printf("--- --- ---\n");
+        exit(1);
         return;
     }
 }
