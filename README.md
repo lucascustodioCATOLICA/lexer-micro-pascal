@@ -1,6 +1,8 @@
 # Analisador Lexico
 
-Este projeto implementa um analisador léxico para a linguagem de programação MicroPascal. O analisador identifica e classifica tokens a partir de um código-fonte, além de relatar erros léxicos.
+Este projeto visa implementar um analisador léxico para a linguagem de programação MicroPascal. A principal função desse analisador é identificar e classificar tokens a partir de um código-fonte em MicroPascal, além de relatar erros léxicos encontrados durante a análise.
+
+O objetivo do analisador é percorrer o código-fonte e separar o texto em unidades básicas (tokens), como palavras-chave, identificadores, operadores, e delimitadores. Caso o código contenha caracteres ou sequências inválidas, o analisador deve gerar mensagens de erro detalhadas.
 
 - **Palavras-chave**: program, var, integer, real, begin, end, if, then, else, while, do.
 - **Identificadores**: ID
